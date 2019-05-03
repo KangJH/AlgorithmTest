@@ -3,8 +3,9 @@
 
 #include "pch.h"
 #include <iostream>
-#include "PalindromeChecker.h"
-#include "StringReplacer.h"
+//#include "PalindromeChecker.h"
+//#include "StringReplacer.h"
+#include "CharRedundantChecker.h"
 int main()
 {
 	string temp;
@@ -17,9 +18,12 @@ int main()
 			//PalindromeChecker palindromeChecker(temp);
 			//bool ret = palindromeChecker.Check();
 			//std::cout << "Palindrome Check result is " << ret << "\n";
-			StringReplacer replacer(temp);
-			string newstring = replacer.Replace("ing", "%0");
-			std::cout << "Replacer result is " << newstring << "\n";
+			
+			//StringReplacer replacer(temp);
+			//string newstring = replacer.Replace("ing", "%0");
+			//std::cout << "Replacer result is " << newstring << "\n";
+			CharRedundantChecker checker(temp);
+			std::cout << "Checker result is " << checker.Check() << "\n";
 		}
 		else
 		{

@@ -23,7 +23,7 @@
     <ProjectGuid>{35B780B9-4883-4381-8BE9-0644813C5C4D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>AlgoTest</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -151,12 +151,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CharRedundantChecker.h" />
     <ClInclude Include="PalindromeChecker.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="StringReplacer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AlgoTest.cpp" />
+    <ClCompile Include="CharRedundantChecker.cpp" />
     <ClCompile Include="PalindromeChecker.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
