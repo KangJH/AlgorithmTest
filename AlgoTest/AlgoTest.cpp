@@ -9,6 +9,7 @@
 #include "ArrayAlgo.h"
 #include "StringTest.h"
 #include "FileHandleTest.h"
+#include "SortTest.h"
 #include <string>
 int main()
 {
@@ -37,7 +38,9 @@ int main()
 			//strTest.mergeTwo();
 			FileHandleTest filetest;
 			//filetest.ReadWrite();
-			filetest.OpenCSV();
+			//filetest.OpenCSV();
+			SortTest test;
+			test.MergeSort();
 		}
 		else
 		{
