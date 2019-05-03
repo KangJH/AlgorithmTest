@@ -5,7 +5,9 @@
 #include <iostream>
 //#include "PalindromeChecker.h"
 //#include "StringReplacer.h"
-#include "CharRedundantChecker.h"
+//#include "CharRedundantChecker.h"
+#include "ArrayAlgo.h"
+#include <string>
 int main()
 {
 	string temp;
@@ -22,8 +24,29 @@ int main()
 			//StringReplacer replacer(temp);
 			//string newstring = replacer.Replace("ing", "%0");
 			//std::cout << "Replacer result is " << newstring << "\n";
-			CharRedundantChecker checker(temp);
-			std::cout << "Checker result is " << checker.Check() << "\n";
+			
+			//CharRedundantChecker checker(temp);
+			//std::cout << "Checker result is " << checker.Check() << "\n";
+
+			std::vector<std::vector<int>> nums = {
+				//{ 1, 10, 10, 2 }, { 10, 2, 10 }, {1, 99, 10 }, {10, 13, 10, 14}, {10, 13, 10, 14, 10},
+				//{10, 10, 3 }, { 1 }, {13, 1 }, {10}, {}
+				{0, 5, 0, 3}, {0, 4, 0, 3}, {0, 1, 0}, {0, 1, 5}, {0, 2, 0}, {0}, {},
+				{7, 0, 4, 3, 0, 2}, {7, 0, 4, 3, 0, 1}, {7, 0, 4, 3, 0, 0}, {7, 0, 1, 0, 0, 7}
+			};
+			ArrayAlgo algo;
+			std::vector<std::vector<int>>::iterator itr1 = nums.begin();
+			for (; itr1 != nums.end(); itr1++)
+			{
+				algo.zeroMax(*itr1);
+				std::cout << "{";
+				std::vector<int>::iterator itr2 = itr1->begin();
+				for (; itr2 != itr1->end(); itr2++)
+				{
+					std::cout << *itr2 << ",";
+				}
+				std::cout << "}\n";
+			}
 		}
 		else
 		{
