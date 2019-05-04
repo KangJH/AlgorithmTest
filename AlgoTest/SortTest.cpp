@@ -18,11 +18,7 @@ SortTest::~SortTest()
 void merge(vector<int>& input, int l, int m, int r)
 {
 	vector<int> front(input.begin() + l, input.begin() + m + 1);
-	vector<int> end = {};
-	if (m + 1 < input.size())
-	{
-		end.assign(input.begin() + m + 1, input.begin() + r + 1);
-	}
+	vector<int> end(input.begin() + m + 1, input.begin() + r + 1);
 	vector<int> result = {};
 	vector<int>::iterator itr_f = front.begin();
 	vector<int>::iterator itr_e = end.begin();
@@ -70,7 +66,7 @@ void mergeSort(vector<int>& input, int l, int r)
 void SortTest::MergeSort()
 {
 	vector<int> testNums = { 0, 8, 19, 3, 3, 5, 1 };
-	mergeSort(testNums, 0, testNums.size());
+	mergeSort(testNums, 0, testNums.size() - 1);
 	for (vector<int>::iterator itr = testNums.begin(); itr != testNums.end(); itr++)
 	{
 		cout << *itr << ",";
