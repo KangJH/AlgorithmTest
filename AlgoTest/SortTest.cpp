@@ -93,57 +93,48 @@ void swap(int& a, int& b)
 int partitionArray(vector<int>& a, int l, int r)
 {
 	//Select Pivot
-	int pivotIndex = 0;
+	int pivotVal = 0;
 	int m = (l + r) / 2;
-	int maxInlm = max(a[l], a[m]);
-	if (maxInlm < a[r])
+	if (a[l] < a[r])
 	{
-		if (a[l] < a[m])
+		if (a[r] < a[m])
 		{
-			pivotIndex = m;
+			pivotVal = a[r];
 		}
 		else
 		{
-			pivotIndex = l;
+			if (a[l] < a[m])
+				pivotVal = a[m];
+			else
+				pivotVal = a[l];
 		}
 	}
 	else
 	{
-		if (maxInlm == a[l])
+		if (a[l] < a[m])
 		{
-			if (a[m] < a[r])
-			{
-				pivotIndex = r;
-			}
+			if (a[r] < a[m])
+				pivotVal = a[r];
 			else
-			{
-				pivotIndex = m;
-			}
+				pivotVal = a[m];
 		}
 		else
 		{
-			if (a[l] < a[r])
-			{
-				pivotIndex = r;
-			}
-			else
-			{
-				pivotIndex = l;
-			}
+			pivotVal = a[l];
 		}
 	}
-	//vector<int> leftArray = {};
-	//vector<int> rightArray = {};
-
 	int leftIndex = l;
 	int rightIndex = r;
 
 	while (leftIndex != rightIndex)
 	{
-		if (a[leftIndex] > a[pivotIndex])
+		if (a[leftIndex] <= pivotVal)
 		{
-			//Find right index which is smaller than pivot.
-			while(a[rightIndex] > a[pivotIndex])
+			leftIndex++;
+		}
+		else
+		{
+			while (a[rightIndex] > pivotVal)
 			{
 				if (rightIndex == leftIndex)
 				{
@@ -151,26 +142,10 @@ int partitionArray(vector<int>& a, int l, int r)
 				}
 				rightIndex--;
 			}
-			if (a[rightIndex] <= a[pivotIndex])
-			{
-				swap(a[leftIndex], a[rightIndex]);
-				if (rightIndex == pivotIndex)
-				{
-					pivotIndex = leftIndex;
-				}
-			}
-		}
-		else
-		{
-			leftIndex++;
+			swap(a[leftIndex], a[rightIndex]);
 		}
 	}
-	if (pivotIndex < leftIndex)
-	{
-		swap(a[leftIndex - 1], a[pivotIndex]);
-		pivotIndex = leftIndex - 1;
-	}
-	return pivotIndex;
+	return leftIndex;
 }
 
 void quickSort(vector<int>& a, int l, int r)
@@ -179,7 +154,7 @@ void quickSort(vector<int>& a, int l, int r)
 	{
 		int p = partitionArray(a, l, r);
 		quickSort(a, l, p - 1);
-		quickSort(a, p + 1, r);
+		quickSort(a, p, r);
 	}
 }
 
