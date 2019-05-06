@@ -40,7 +40,7 @@ int main()
 			//filetest.ReadWrite();
 			//filetest.OpenCSV();
 			SortTest test;
-			test.MergeSort();
+			test.QuickSort();
 		}
 		else
 		{
