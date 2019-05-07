@@ -93,59 +93,35 @@ void swap(int& a, int& b)
 int partitionArray(vector<int>& a, int l, int r)
 {
 	//Select Pivot
-	int pivotVal = 0;
-	int m = (l + r) / 2;
-	if (a[l] < a[r])
-	{
-		if (a[r] < a[m])
-		{
-			pivotVal = a[r];
-		}
-		else
-		{
-			if (a[l] < a[m])
-				pivotVal = a[m];
-			else
-				pivotVal = a[l];
-		}
-	}
-	else
-	{
-		if (a[l] < a[m])
-		{
-			if (a[r] < a[m])
-				pivotVal = a[r];
-			else
-				pivotVal = a[m];
-		}
-		else
-		{
-			pivotVal = a[l];
-		}
-	}
+	int pivotIndex = (l + r) / 2;
 	int leftIndex = l;
 	int rightIndex = r;
 
-	while (leftIndex != rightIndex)
+	while (leftIndex <= rightIndex)
 	{
-		if (a[leftIndex] <= pivotVal)
+		while (a[leftIndex] <= a[pivotIndex])
 		{
 			leftIndex++;
 		}
-		else
+		while (a[rightIndex] > a[pivotIndex])
 		{
-			while (a[rightIndex] > pivotVal)
-			{
-				if (rightIndex == leftIndex)
-				{
-					break;
-				}
-				rightIndex--;
-			}
+			rightIndex--;
+		}
+		if (leftIndex <= rightIndex)
+		{
 			swap(a[leftIndex], a[rightIndex]);
+			if (leftIndex == pivotIndex)
+			{
+				pivotIndex = rightIndex;
+			}
+			else if(rightIndex == pivotIndex)
+			{
+				pivotIndex = leftIndex;
+			}
+			
 		}
 	}
-	return leftIndex;
+	return pivotIndex;
 }
 
 void quickSort(vector<int>& a, int l, int r)
@@ -154,7 +130,7 @@ void quickSort(vector<int>& a, int l, int r)
 	{
 		int p = partitionArray(a, l, r);
 		quickSort(a, l, p - 1);
-		quickSort(a, p, r);
+		quickSort(a, p + 1, r);
 	}
 }
 

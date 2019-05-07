@@ -41,6 +41,7 @@ int main()
 			//filetest.OpenCSV();
 			SortTest test;
 			test.QuickSort();
+			//test.MergeSort();
 		}
 		else
 		{
